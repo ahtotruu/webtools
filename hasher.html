@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Hash calculator</title>
+		<script type="text/javascript" src="hasher.js"></script>
+	</head>
+	<body onload="initPage()">
+		<h1>Hash calculator</h1>
+		<div id="content_section">
+			<form>
+				<p>Data source:
+					<input id="source_file" type="radio" name="source" value="file" onchange="sourceChanged()" />File contents
+					<input id="source_text" type="radio" name="source" value="text" onchange="sourceChanged()" />Text entry
+				</p>
+				<p id="input_file_section">Input file:
+					<input id="input_file" type="file" name="file" />
+				</p>
+				<p id="input_text_section">Input data (in hexadecimal; case-insensitive; whitespace is ignored):<br>
+					<textarea id="input_text" name="text" rows="10" cols="40"></textarea>
+				</p>
+				<p>Hash function:
+					<select id="hash_function" name="function">
+						<option value="SHA-1">SHA-1</option>
+						<option value="SHA-256" selected>SHA-256</option>
+						<option value="SHA-384">SHA-384</option>
+						<option value="SHA-512">SHA-512</option>
+					</select>
+				</p>
+				<p>
+					<input type="button" name="compute" value="Compute" onclick="computeClicked()" />
+				</p>
+				<p>Hash value:
+					<span id="result"></span>
+				</p>
+			</form>
+		</div>
+	</body>
+</html>
