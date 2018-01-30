@@ -66,12 +66,23 @@ function hashText() {
 }
 
 function hashData(data) {
-	cryptoApi.subtle.digest(document.getElementById("hash_function").value, data).then(function(hash) {
-		var view = new DataView(hash);
-		var text = "";
-		for (var i = 0; i < hash.byteLength; i += 1) {
-			text = text + ("00" + view.getUint8(i).toString(16)).slice(-2);
-		}
-		document.getElementById("result").innerHTML = text;
-	});
+	var res = cryptoApi.subtle.digest(document.getElementById("hash_function").value, data);
+	if (res.then) {
+		res.then(function(hash) {
+			showHash(hash);
+		});
+	} else {
+		res.oncomplete = function(event) {
+			showHash(event.target.result);
+		};
+	}
+}
+
+function showHash(hash) {
+	var view = new DataView(hash);
+	var text = "";
+	for (var i = 0; i < hash.byteLength; i += 1) {
+		text = text + ("00" + view.getUint8(i).toString(16)).slice(-2);
+	}
+	document.getElementById("result").innerHTML = text;
 }
