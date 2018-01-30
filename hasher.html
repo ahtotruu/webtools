@@ -13,12 +13,16 @@
 					<input id="source_file" type="radio" name="source" value="file" onchange="sourceChanged()" />File contents
 					<input id="source_text" type="radio" name="source" value="text" onchange="sourceChanged()" />Text entry
 				</p>
-				<p id="input_file_section">Input file:
-					<input id="input_file" type="file" name="file" />
-				</p>
-				<p id="input_text_section">Input data (in hexadecimal; case-insensitive; whitespace is ignored):<br>
-					<textarea id="input_text" name="text" rows="10" cols="40"></textarea>
-				</p>
+				<div id="input_file_section">
+					<p>Input file:
+						<input id="input_file" type="file" name="file" />
+					</p>
+				</div>
+				<div id="input_text_section">
+					<p>Input data (in hexadecimal; case-insensitive; whitespace is ignored):<br>
+						<textarea id="input_text" name="text" rows="10" cols="40"></textarea>
+					</p>
+				</div>
 				<p>Hash function:
 					<select id="hash_function" name="function">
 						<option value="SHA-1">SHA-1</option>

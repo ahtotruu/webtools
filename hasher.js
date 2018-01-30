@@ -1,5 +1,5 @@
 var cryptoApi = window.crypto || window.msCrypto;
-var cryptoApiOk = crypto && crypto.subtle;
+var cryptoApiOk = cryptoApi && cryptoApi.subtle;
 var fileApiOk = window.File && window.FileReader && window.FileList && window.Blob;
 
 function initPage() {
@@ -7,7 +7,7 @@ function initPage() {
 		document.getElementById("content_section").innerHTML = "<p>Sorry, your browser does not seem to support the Web Crypto API this page relies on.</p>";
 	}
 	if (!fileApiOk) {
-		document.getElementById("input_file_section").innerHTML = "Sorry, your browser does not seem to support the File API this page relies on."
+		document.getElementById("input_file_section").innerHTML = "<p>Sorry, your browser does not seem to support the File API this page relies on.</p>";
 	}
 	sourceChanged();
 }
