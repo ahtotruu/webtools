@@ -52,14 +52,16 @@ function loadFile() {
 }
 
 function parseText() {
+	var text = document.getElementById("input_text").value;
+	var filter = document.getElementById("input_filter").checked;
 	if (document.getElementById("input_format").value == "base16") {
-		var data = fromBaseX(document.getElementById("input_text").value.toLowerCase(), base16, 4, 2);
+		var data = fromBaseX(text.toLowerCase(), base16, 4, 2, filter);
 	}
 	if (document.getElementById("input_format").value == "base32") {
-		var data = fromBaseX(document.getElementById("input_text").value.toUpperCase(), base32, 5, 8);
+		var data = fromBaseX(text.toUpperCase(), base32, 5, 8, filter);
 	}
 	if (document.getElementById("input_format").value == "base64") {
-		var data = fromBaseX(document.getElementById("input_text").value, base64, 6, 4);
+		var data = fromBaseX(text, base64, 6, 4, filter);
 	}
 	if (data) {
 		encodeData(data);
@@ -79,8 +81,11 @@ function encodeData(data) {
 }
 
 // inefficient, but simple and clear
-function fromBaseX(text, chars, bits, block) {
+function fromBaseX(text, chars, bits, block, filter) {
 	text = text.replace(new RegExp("[" + white + "]", "g"), "");
+	if (filter) {
+		text = text.replace(new RegExp("[^" + chars + "=" + "]", "g"), "");
+	}
 	if (text.length % block > 0) {
 		alert("Error: Input has invalid length.");
 		return;
