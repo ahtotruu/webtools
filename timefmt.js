@@ -47,3 +47,9 @@ function formatTime(year, month, date, hours, minutes, seconds) {
 		("00" + minutes.toString()).slice(-2) + ":" +
 		("00" + seconds.toString()).slice(-2);
 }
+
+Number.isInteger = Number.isInteger || function(value) {
+	return typeof value === "number" &&
+		isFinite(value) &&
+		Math.floor(value) === value;
+};
