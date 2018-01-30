@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Data recoder</title>
+		<script type="text/javascript" src="recoder.js"></script>
+	</head>
+	<body onload="initPage()">
+		<h1>Data recoder</h1>
+		<div id="content_section">
+			<form>
+				<p>Data source:
+					<input id="source_file" type="radio" name="source" value="file" onchange="sourceChanged()" />File contents
+					<input id="source_text" type="radio" name="source" value="text" onchange="sourceChanged()" />Text entry
+				</p>
+				<div id="input_file_section">
+					<p>Input file:
+						<input id="input_file" type="file" name="file" />
+					</p>
+				</div>
+				<div id="input_text_section">
+					<p>Input format:
+						<select id="input_format" name="input_format">
+							<option value="base16">Base-16 (hexadecimal)</option>
+							<option value="base32">Base-32</option>
+							<option value="base64">Base-64</option>
+						</select>
+					</p>
+					<p>Input data (base-16 and base-32 are case-insensitive, base-64 is case-sensitive; whitespace is ignored):<br>
+						<textarea id="input_text" name="text" rows="10" cols="40"></textarea>
+					</p>
+				</div>
+				<p>Output format:
+					<select id="output_format" name="output_format">
+						<option value="base16">Base-16 (hexadecimal)</option>
+						<option value="base32">Base-32</option>
+						<option value="base64">Base-64</option>
+					</select>
+				</p>
+				<p>
+					<input type="button" name="recode" value="Recode" onclick="recodeClicked()" />
+				</p>
+				<p>Output:
+					<span id="output_data"></span>
+				</p>
+			</form>
+		</div>
+	</body>
+</html>
