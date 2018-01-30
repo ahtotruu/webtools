@@ -85,7 +85,7 @@ function fromBaseX(text, chars, bits, block) {
 		alert("Error: Input has invalid length.");
 		return;
 	}
-	while (text.endsWith("=")) {
+	while (text.length > 0 && text.slice(-1) == "=") {
 		text = text.slice(0, text.length - 1);
 	}
 	if (text.search(new RegExp("[^" + chars + "]")) != -1) {
