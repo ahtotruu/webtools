@@ -8,7 +8,7 @@ function formatClicked() {
 		var time = parseText(document.getElementById("input_text").value, base10);
 	}
 	if (document.getElementById("input_format").value == "base16") {
-		var time = parseText(document.getElementById("input_text").value, base16);
+		var time = parseText(document.getElementById("input_text").value.toLowerCase(), base16);
 	}
 	if (!Number.isInteger(time)) {
 		return;
